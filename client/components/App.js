@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import BillList from './BillList'
+
 export default class App extends Component {
 	constructor(props) {
 		super(props)
@@ -8,9 +10,7 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div>
-				Server is up and running!!!
-			</div>
+			<BillList />
 		)
 	}
 }
