@@ -9,7 +9,7 @@ export default class App extends Component {
 	render() {
 		return (
 			<div>
-				Server is up and running
+				Server is up and running!!!
 			</div>
 		)
 	}
