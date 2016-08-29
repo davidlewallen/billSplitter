@@ -12,6 +12,8 @@ require('./passport')(passport);
 
 var assetFolder = path.join(__dirname, '..', 'client','public');
 
+var routes = require('./controllers/index');
+
 app.use(express.static(assetFolder));
 app.use(webpackDevMiddleware(webpack(webpackConfig), { noInfo: true }));
 app.use(require('body-parser').urlencoded({ extended: true }));
@@ -23,29 +25,9 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// TODO: REMOVE THIS BEFORE PUSHING
-// THIS IS STRICTLY FOR TESTING ONLY
-app.get('/auth/google/login',
-  passport.authenticate('google', {
-    scope: [
-      'profile',
-      'https://www.googleapis.com/auth/userinfo.email',
-    ]
-  })
-);
 
-app.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/');
-  }
-);
 
-app.get('/api/logout', function(req, res) {
-  req.logout();
-  req.session.destroy();
-  res.redirect('/');
-})
+app.use('/api', routes)
 
 // Wild card route for client side routing.
 app.get('/*', (req, res) => {
