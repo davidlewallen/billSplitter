@@ -16,7 +16,7 @@ app.use(express.static(assetFolder));
 app.use(webpackDevMiddleware(webpack(webpackConfig), { noInfo: true }));
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({
-  secret: 'keyboard cat', resave: true, saveUninitialized: true
+  secret: 'keyboard cat', resave: false, saveUninitialized: false
 }));
 
 // Initialize Passport and restore authentication state, if any, from the session
