@@ -7,7 +7,6 @@ module.exports = {
   getUserByEmail,
   getUsersByGroup,
   createUser,
-  getUser,
   setUserGroup,
 }
 
@@ -16,7 +15,7 @@ function findOrCreate(profile) {
   .then(user =>
     !user.length
     ? createUser(profile)
-    : findUser(profile.id)
+    : getUserByGoogleId(profile.id)
   );
 }
 function getUserByGoogleId(googleId) {
@@ -49,10 +48,6 @@ function createUser(profile) {
     'last_name',
     'email',
   ])
-}
-
-function getUser(userId) {
-  return knex('users').where('id', userId);
 }
 
 function setUserGroup(userId, groupId) {
