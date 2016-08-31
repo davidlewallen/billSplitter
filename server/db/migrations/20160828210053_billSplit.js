@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
       table.string('first_name').notNullable();
       table.string('last_name').notNullable();
       table.string('email').notNullable();
+      table.integer('group_id').references('id').inTable('groups');
     }),
 
     knex.schema.createTable('bills', function(table) {

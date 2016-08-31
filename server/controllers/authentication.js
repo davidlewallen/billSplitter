@@ -1,17 +1,11 @@
-const express  = require('express');
+const express = require('express');
 const passport = require('passport');
 
-const router   = express.Router();
+const router = express.Router();
 
 module.exports = router;
 
-router.post('/logout', function(req,res) {
-  req.logout();
-  req.session.destroy();
-  res.send(false);
-})
-
-router.get('/auth/google/login',
+router.get('/google/login',
   passport.authenticate('google', {
     scope: [
       'profile',
@@ -20,9 +14,15 @@ router.get('/auth/google/login',
   })
 );
 
-router.get('/auth/google/callback',
+router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/');
   }
 );
+
+router.post('/logout', function(req,res) {
+  req.logout();
+  req.session.destroy();
+  res.send(false);
+});

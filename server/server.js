@@ -25,8 +25,6 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
 app.use('/api', routes)
 
 // Wild card route for client side routing.

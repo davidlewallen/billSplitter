@@ -10,6 +10,11 @@ export default class App extends Component {
 		return (
 			<div>
 				Server is up and running!!!
+				<button>
+					<a href="/api/oauth/google/login">
+					Login
+					</a>
+				</button>
 			</div>
 		)
 	}
