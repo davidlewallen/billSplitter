@@ -6,7 +6,6 @@ const User = require('../models/user');
 
 module.exports = router;
 
-
 // *** GET user by google id *** //
 router.get('/google/:googleId', function(req, res, next) {
   utils.queryHandler(User.getUserByGoogleId, req.params.id, req, res, next);

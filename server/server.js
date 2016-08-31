@@ -1,18 +1,18 @@
-var path = require('path');
-var express = require('express');
-var webpack = require('webpack');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var passport = require('passport');
+const path = require('path');
+const express = require('express');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const passport = require('passport');
 
-var webpackConfig = require('../webpack.config.js');
+const webpackConfig = require('../webpack.config.js');
 
-var app = express();
+let app = express();
 
 require('./passport')(passport);
 
-var assetFolder = path.join(__dirname, '..', 'client','public');
+const assetFolder = path.join(__dirname, '..', 'client','public');
 
-var routes = require('./controllers/index');
+const routes = require('./controllers/index');
 
 app.use(express.static(assetFolder));
 app.use(webpackDevMiddleware(webpack(webpackConfig), { noInfo: true }));
