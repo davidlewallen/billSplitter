@@ -21,6 +21,9 @@
 ##### GET /api/group/:id
   * given a group id, returns an array with a single group
 
+##### GET /api/group/code/:groupCode
+  * given a group_code, returns an array with a single group
+
 ##### POST /api/group/create
   * request body should have a userId, groupName
   * return a newly created group with the user auto joined
