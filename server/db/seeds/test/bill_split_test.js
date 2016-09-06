@@ -34,4 +34,13 @@ exports.seed = function(knex, Promise) {
       group_id   : 2,
     })
   })
+  .then(() => {
+    return knex('users').insert({
+      google_id  : 12345,
+      first_name : 'testName2',
+      last_name  : 'nameTest2',
+      email      : 'test2@gmail.com',
+      group_id   : 2,
+    })
+  })
 };

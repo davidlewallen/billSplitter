@@ -12,7 +12,7 @@ describe('API User Routes', () => {
 
   beforeEach(function(done) {
     knex.migrate.rollback()
-    .then(function() {
+  .then(function() {
       knex.migrate.latest()
       .then(function() {
         return knex.seed.run()
@@ -100,13 +100,13 @@ describe('API User Routes', () => {
   });
 
   describe('GET /api/user/group/:groupId', function() {
-    it('should return a single user', function(done) {
+    it('should return mulitple users', function(done) {
       chai.request(server)
       .get('/api/user/group/2')
       .end(function(err, res) {
         res.should.have.status(200);
         res.should.be.json;
-        res.body.length.should.equal(1);
+        res.body.length.should.equal(2);
         res.body[0].should.have.property('id');
         res.body[0].id.should.equal(2);
         res.body[0].should.have.property('google_id');
@@ -117,6 +117,16 @@ describe('API User Routes', () => {
         res.body[0].last_name.should.equal('nameTest');
         res.body[0].should.have.property('email');
         res.body[0].email.should.equal('test@gmail.com');
+        res.body[1].should.have.property('id');
+        res.body[1].id.should.equal(3);
+        res.body[1].should.have.property('google_id');
+        res.body[1].google_id.should.equal('12345');
+        res.body[1].should.have.property('first_name');
+        res.body[1].first_name.should.equal('testName2');
+        res.body[1].should.have.property('last_name');
+        res.body[1].last_name.should.equal('nameTest2');
+        res.body[1].should.have.property('email');
+        res.body[1].email.should.equal('test2@gmail.com');
         done();
       });
     });
@@ -129,7 +139,7 @@ describe('API User Routes', () => {
       .set('content-type', 'application/json')
       .send({ userId: 1 })
       .end(function(err, res) {
-        res.should.have.status(201);
+        res.should.have.status(200);
         res.should.be.json;
         res.body.length.should.equal(1);
         res.body[0].should.have.property('id');
