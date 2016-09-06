@@ -6,9 +6,9 @@ module.exports = {
 }
 
 function getGroupById(groupId) {
-  return knex('group').where(id, groupId);
+  return knex('groups').where('id', groupId);
 }
 
-function createGroup(groupName) {
-  return knex('group').insert(groupName);
+function createGroup(groupData) {
+  return knex('groups').insert(groupData).returning(['id', 'name', 'created_by']);
 }
