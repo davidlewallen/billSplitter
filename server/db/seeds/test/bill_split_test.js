@@ -45,4 +45,12 @@ exports.seed = function(knex, Promise) {
       group_id   : 2,
     })
   })
+  .then(() => {
+    return knex('users').insert({
+      google_id  : 123456,
+      first_name : 'group',
+      last_name  : 'Join',
+      email      : 'groupJoin@gmail.com'
+    })
+  })
 };

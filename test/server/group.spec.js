@@ -72,6 +72,32 @@ describe('API Group Routes', () => {
         res.body[0].should.have.property('group_id');
         res.body[0].group_id.should.equal(3)
         done();
+      });
+    });
+  });
+
+  describe('POST /api/group/join/:groupCode', function() {
+    it('should join the curernt user to a group with the given group_code', function(done) {
+      chai.request(server)
+      .post('/api/group/join/AbCd0')
+      .set('content-type', 'application/json')
+      .send({ userId: 4 })
+      .end(function(err, res) {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body[0].should.have.property('id');
+        res.body[0].id.should.equal(4);
+        res.body[0].should.have.property('google_id');
+        res.body[0].google_id.should.equal('123456');
+        res.body[0].should.have.property('first_name');
+        res.body[0].first_name.should.equal('group');
+        res.body[0].should.have.property('last_name');
+        res.body[0].last_name.should.equal('Join');
+        res.body[0].should.have.property('email');
+        res.body[0].email.should.equal('groupJoin@gmail.com');
+        res.body[0].should.have.property('group_id');
+        res.body[0].group_id.should.equal(1)
+        done();
       })
     })
   })
