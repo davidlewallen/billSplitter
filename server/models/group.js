@@ -1,7 +1,14 @@
-const express = require('express');
-const router = express.Router();
+const knex = require('../db/knex');
 
-module.exports = router;
+module.exports = {
+  getGroupById,
+  createGroup,
+}
 
+function getGroupById(groupId) {
+  return knex('group').where(id, groupId);
+}
 
-// TODO: Build out group
+function createGroup(groupName) {
+  return knex('group').insert(groupName);
+}
