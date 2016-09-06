@@ -8,7 +8,7 @@ module.exports = router;
 
 // *** GET user by google id *** //
 router.get('/google/:googleId', function(req, res, next) {
-  utils.queryHandler(User.getUserByGoogleId, req.params.id, req, res, next);
+  utils.queryHandler(User.getUserByGoogleId, req.params.googleId, req, res, next);
 })
 
 // *** GET user by id *** //
@@ -28,5 +28,6 @@ router.get('/group/:groupId', function(req, res, next) {
 
 // *** PUT set user's group *** //
 router.put('/setGroup/:groupId', function(req, res, next) {
-  utils.queryHandler(Users.setUserGroup, req.params.groupId, req, res, next);
+  const data = { userId: req.body.userId, groupId: req.params.groupId };
+  utils.queryHandler(User.setUserGroup, data, req, res, next);
 })
