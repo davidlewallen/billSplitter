@@ -16,6 +16,7 @@ const routes = require('./controllers/index');
 
 app.use(express.static(assetFolder));
 app.use(webpackDevMiddleware(webpack(webpackConfig), { noInfo: true }));
+app.use(require('body-parser').json());
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({
   secret: 'keyboard cat', resave: false, saveUninitialized: false
