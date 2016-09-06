@@ -50,11 +50,17 @@ function createUser(profile) {
   ])
 }
 
-function setUserGroup(userId, groupId) {
+function setUserGroup(data) {
   return knex('users')
-    .where('id', userId)
-    .insert({ group_id: groupId })
-    .returning(['id', 'first_name', 'last_name', 'group_id']);
+    .where('id', data.userId)
+    .update({ group_id: data.groupId })
+    .returning(['id',
+      'google_id',
+      'first_name',
+      'last_name',
+      'email',
+      'group_id'
+    ])
 }
 
 
