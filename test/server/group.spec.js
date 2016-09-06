@@ -43,13 +43,15 @@ describe('API Group Routes', () => {
         res.body[0].name.should.equal('test');
         res.body[0].should.have.property('created_by');
         res.body[0].created_by.should.equal('test1');
+        res.body[0].should.have.property('group_code');
+        res.body[0].group_code.should.equal('AbCd0');
         done();
       });
     });
   });
 
-  describe.only('POST /api/group/create', function() {
-    it('should create a single group and add the user to it', function(done) {
+  describe('POST /api/group/create', function() {
+    it('should create a single group and add the current user to it', function(done) {
       chai.request(server)
       .post('/api/group/create')
       .set('content-type', 'application/json')

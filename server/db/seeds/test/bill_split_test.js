@@ -8,13 +8,15 @@ exports.seed = function(knex, Promise) {
   .then(() => {
     return knex('groups').insert({
       name       : 'test',
-      created_by : 'test1'
+      created_by : 'test1',
+      group_code : 'AbCd0'
     })
   })
   .then(() => {
     return knex('groups').insert({
       name       : 'testFind',
-      created_by : 'test2'
+      created_by : 'test2',
+      group_code : 'ABCD0'
     })
   })
   .then(() => {

@@ -10,5 +10,17 @@ function getGroupById(groupId) {
 }
 
 function createGroup(groupData) {
+  let data = Object.assign(groupData, { group_code: generateGroupCode() });
   return knex('groups').insert(groupData).returning(['id', 'name', 'created_by']);
+}
+// Generates a random 5 character string to allow users to join a specific group
+function generateGroupCode() {
+  const possibile = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()'
+  let text = [];
+
+  for(let i = 0; i < 5; i++) {
+    text.push(possibile.charAt(Math.floor(Math.random() * possibile.length)))
+  };
+
+  return text.join('');
 }
