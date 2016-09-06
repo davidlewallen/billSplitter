@@ -24,3 +24,7 @@
 ##### POST /api/group/create
   * request body should have a userId, groupName
   * return a newly created group with the user auto joined
+
+##### POST /api/group/join/:groupCode
+  * request body should have a userId
+  * given a userId and groupCode, user should join said group
