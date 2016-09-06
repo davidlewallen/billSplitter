@@ -23,6 +23,7 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('groups', function(table) {
       table.increments();
       table.string('name').notNullable();
+      table.string('created_by').notNullable();
     }),
 
     knex.schema.createTable('bill_pay_info', function(table) {
