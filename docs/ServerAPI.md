@@ -15,3 +15,12 @@
 ##### PUT /api/user/setGroup/:groupId
   * request body should have a userId
   * given a group id, update user with groupId
+
+## Group
+
+##### GET /api/group/:id
+  * given a group id, returns an array with a single group
+
+##### POST /api/group/create
+  * request body should have a userId, groupName
+  * return a newly created group with the user auto joined
