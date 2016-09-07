@@ -31,3 +31,23 @@
 ##### POST /api/group/join/:groupCode
   * request body should have a userId
   * given a userId and groupCode, user should join said group
+
+## Bill
+
+##### GET /api/bill
+  * returns an array of all bills
+
+##### GET /api/bill/:billId
+  * given a bill_id, returns an array with a single bill
+
+##### GET /api/bill/group/:groupId
+  * given a group_id, returns an array with all bills associated with said group
+
+##### POST /api/bill
+  * request body should have the following
+    * companyName
+    * dueDate
+    * amountTotal
+    * userId
+    * groupId
+  * given the following information, create a bill for the said group with provided information
