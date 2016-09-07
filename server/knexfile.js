@@ -1,7 +1,7 @@
 module.exports = {
   test: {
     client: 'pg',
-    connection: 'postgres://localhost/bill_split_Test',
+    connection: 'postgres://localhost/bill_split_test',
     migrations: {
       directory: __dirname + '/db/migrations'
     },

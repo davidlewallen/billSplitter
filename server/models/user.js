@@ -1,19 +1,37 @@
-var knex = require('../db/knex');
+const knex = require('../db/knex');
 
 module.exports = {
   findOrCreate,
+  getUserByGoogleId,
+  getUserById,
+  getUserByEmail,
+  getUsersByGroup,
+  createUser,
+  setUserGroup,
 }
 
 function findOrCreate(profile) {
   return getUserByGoogleId(profile.id)
-    .then(user =>
-      !user.length
-      ? createUser(profile)
-      : findUser(profile.id)
-    );
+  .then(user =>
+    !user.length
+    ? createUser(profile)
+    : getUserByGoogleId(profile.id)
+  );
 }
 function getUserByGoogleId(googleId) {
   return knex('users').where('google_id', googleId);
+}
+
+function getUserById(userId) {
+  return knex('users').where('id', userId);
+}
+
+function getUserByEmail(userEmail) {
+  return knex('users').where('email', userEmail);
+}
+
+function getUsersByGroup(groupId) {
+  return knex('users').where('group_id', groupId);
 }
 
 function createUser(profile) {
@@ -31,3 +49,18 @@ function createUser(profile) {
     'email',
   ])
 }
+
+function setUserGroup(data) {
+  return knex('users')
+    .where('id', data.userId)
+    .update({ group_id: data.groupId })
+    .returning(['id',
+      'google_id',
+      'first_name',
+      'last_name',
+      'email',
+      'group_id'
+    ])
+}
+
+
