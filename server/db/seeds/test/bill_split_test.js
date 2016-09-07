@@ -53,4 +53,44 @@ exports.seed = function(knex, Promise) {
       email      : 'groupJoin@gmail.com'
     })
   })
+  .then(() => {
+    return knex('users').insert({
+      google_id  : 1,
+      first_name : 'test1',
+      last_name  : 'test-1',
+      email      : 'test1@gmail.com',
+      group_id   : 1
+    })
+  })
+  .then(() => {
+    return knex('users').insert({
+      google_id  : 2,
+      first_name : 'test2',
+      last_name  : 'test-2',
+      email      : 'test2@gmail.com',
+      group_id   : 1
+    })
+  })
+  .then(() => {
+    return knex('bills').insert({
+      company_name      : 'testCompany',
+      due_date          : '2016-09-09',
+      amount_total      : 157.32,
+      amount_remaining  : 157.32,
+      amount_per_person : 78.66,
+      user_id           : 5,
+      group_id          : 1
+    })
+  })
+  .then(() => {
+    return knex('bills').insert({
+      company_name      : 'testCompany1',
+      due_date          : '2016-09-10',
+      amount_total      : 200,
+      amount_remaining  : 100,
+      amount_per_person : 100,
+      user_id           : 5,
+      group_id          : 1
+    })
+  })
 };

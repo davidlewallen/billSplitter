@@ -13,10 +13,10 @@ exports.up = function(knex, Promise) {
       table.increments();
       table.string('company_name').notNullable();
       table.date('due_date').notNullable();
-      table.integer('amount_total').notNullable();
-      table.integer('amount_remaining').notNullable();
-      table.integer('amount_per_person').notNullable();
-      table.string('created_by').notNullable();
+      table.decimal('amount_total').notNullable();
+      table.decimal('amount_remaining').notNullable();
+      table.decimal('amount_per_person').notNullable();
+      table.integer('user_id').notNullable().references('id').inTable('users');
       table.integer('group_id').notNullable().references('id').inTable('groups');
     }),
 
