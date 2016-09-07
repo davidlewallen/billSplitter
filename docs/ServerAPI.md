@@ -43,6 +43,10 @@
 ##### GET /api/bill/group/:groupId
   * given a group_id, returns an array with all bills associated with said group
 
+##### GET /api/bill/pay/:billId
+  * request body should have a userId
+  * given a userId and billId, update
+
 ##### POST /api/bill
   * request body should have the following
     * companyName
