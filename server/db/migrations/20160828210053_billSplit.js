@@ -33,7 +33,6 @@ exports.up = function(knex, Promise) {
       table.integer('bill_id').notNullable().references('id').inTable('bills');
       table.bool('paid').notNullable();
       table.date('date_paid');
-      table.integer('amount_paid');
     })
   ])  
 };
