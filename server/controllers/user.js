@@ -3,6 +3,7 @@ const router = express.Router();
 
 const utils = require('../utils/utils');
 const User = require('../models/user');
+const BillPay = require('../models/billPayInfo');
 
 module.exports = router;
 
@@ -30,4 +31,9 @@ router.get('/group/:groupId', function(req, res, next) {
 router.put('/setGroup/:groupId', function(req, res, next) {
   const data = { userId: req.body.userId, groupId: req.params.groupId };
   utils.queryHandler(User.setUserGroup, data, req, res, next);
+
+  User.setUserGroup(data)
+  .then(user => {
+
+  })
 })

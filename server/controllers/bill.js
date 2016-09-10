@@ -52,6 +52,25 @@ router.get('/group/:groupId', function(req, res, next) {
   });
 });
 
+// *** POST pay bill with provided billId ***
+router.post('/pay/:billId', function(req, res, next) {
+  const billId = req.params.billId
+  Bill.getBillById(billId)
+  .then(bill => {
+    if(!bill) {
+      res.status(404).send({error: `Bill with id:${billId} not found.`})
+    } else {
+      return Bill.payBill({ userId: req.body.userId, billId: billId });
+    }
+  })
+  .then(billInfo => {
+    res.status(200).send(billInfo);
+  })
+  .catch(err => {
+    next(err);
+  });
+});
+
 // *** POST create a new bill ***
 router.post('/', function(req, res, next) {
   let billData = {

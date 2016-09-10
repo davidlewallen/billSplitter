@@ -5,6 +5,7 @@ module.exports = {
   getBillById,
   getBillsByGroup,
   createBill,
+  payBill,
 }
 
 function getBills() {
@@ -31,3 +32,12 @@ function createBill(billData) {
     'group_id'
   ]);
 };
+
+function payBill(payDetails) {
+  const currentDate = new Date();
+  
+  return knex('bill_pay_info')
+  .where({ user_id: userId, bill_id: billId })
+  .update({ paid: true, date_paid: currentDate })
+  .returning(['id', 'user_id', 'bill_id', 'paid', 'date_paid']);
+}
