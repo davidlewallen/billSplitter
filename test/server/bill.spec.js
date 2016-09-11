@@ -132,7 +132,7 @@ describe('API Bill Routes', () => {
   });
 
   describe('POST /api/bill/pay/:billId', function() {
-    it('should pay a single bill', function(done) {
+    it('should pay a single bill for a single user', function(done) {
       chai.request(server)
       .post('/api/bill/pay/1')
       .set('content-type', 'application/json')
@@ -141,7 +141,7 @@ describe('API Bill Routes', () => {
         res.should.have.status(200);
         res.should.be.json;
         res.body[0].should.have.property('id');
-        res.body[0].id.should.equal('1');
+        res.body[0].id.should.equal(1);
         res.body[0].should.have.property('user_id');
         res.body[0].user_id.should.equal(5);
         res.body[0].should.have.property('bill_id');
@@ -149,7 +149,7 @@ describe('API Bill Routes', () => {
         res.body[0].should.have.property('paid');
         res.body[0].paid.should.equal(true);
         res.body[0].should.have.property('date_paid');
-        res.body[0].date_paid.should.equal(new Date());
+        res.body[0].date_paid.should.equal('2016-09-10T05:00:00.000Z');
         done();
       })
     })

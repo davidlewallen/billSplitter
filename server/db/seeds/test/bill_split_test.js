@@ -93,4 +93,18 @@ exports.seed = function(knex, Promise) {
       group_id          : 1
     })
   })
+  .then(() => {
+    return knex('bill_pay_info').insert({
+      user_id: 5,
+      bill_id: 1,
+      paid: false,
+    })
+  })
+  .then(() => {
+    return knex('bill_pay_info').insert({
+      user_id: 6,
+      bill_id: 1,
+      paid: false,
+    })
+  })
 };
