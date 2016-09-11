@@ -62,7 +62,7 @@ router.post('/pay/:billId', function(req, res, next) {
     if(!bill) {
       res.status(404).send({error: `Bill with id:${billId} not found.`})
     } else {
-      return Bill.payBill({ userId: req.body.userId, billId: billId });
+      return BillPay.payBill({ userId: req.body.userId, billId: billId });
     }
   })
   .then(billInfo => {
