@@ -2,8 +2,10 @@ const express = require('express');
 const router  = express.Router();
 
 const utils = require('../utils/utils');
+
 const Group = require('../models/group');
 const User  = require('../models/user');
+const Bill  = require('../models/bill');
 
 module.exports = router;
 
@@ -39,7 +41,6 @@ router.post('/join/:groupCode', function(req, res, next) {
       res.status(404).send('ERROR: Group not found')
     } else {
       const groupData = { userId: req.body.userId, groupId: group[0].id}
-
       return User.setUserGroup(groupData);
     }
   })

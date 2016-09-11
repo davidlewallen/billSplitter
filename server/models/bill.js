@@ -13,7 +13,7 @@ function getBills() {
 };
 
 function getBillById(billId) {
-  return knex('bills').where('id', billId);
+return knex('bills').where('id', billId);
 };
 
 function getBillsByGroup(groupId) {
@@ -37,7 +37,7 @@ function payBill(payDetails) {
   const currentDate = new Date();
   
   return knex('bill_pay_info')
-  .where({ user_id: userId, bill_id: billId })
+  .where({ user_id: payDetails.userId, bill_id: payDetails.billId })
   .update({ paid: true, date_paid: currentDate })
   .returning(['id', 'user_id', 'bill_id', 'paid', 'date_paid']);
 }

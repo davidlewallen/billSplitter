@@ -30,10 +30,6 @@ router.get('/group/:groupId', function(req, res, next) {
 // *** PUT set user's group *** //
 router.put('/setGroup/:groupId', function(req, res, next) {
   const data = { userId: req.body.userId, groupId: req.params.groupId };
+
   utils.queryHandler(User.setUserGroup, data, req, res, next);
-
-  User.setUserGroup(data)
-  .then(user => {
-
-  })
 })
