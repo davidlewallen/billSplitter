@@ -1,0 +1,14 @@
+##### User Authentication #####
+  * User should be able to sign in
+  * User should be able to log out
+
+##### User Team #####
+  * User should be able to create a team
+  * User should be able to join a team
+  * User should be able to leave a team
+
+##### User Bill #####
+  * User should be able to create a bill
+  * User should be able to view bills
+  * User should be able to modify a bill
+  * User should be able to pay a bill

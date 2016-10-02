@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter=nyan",
+    "test": "mocha",
     "start": "./node_modules/.bin/nodemon ./server/server.js --ignore client/"
   },
   "author": "",

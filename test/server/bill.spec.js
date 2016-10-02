@@ -126,11 +126,12 @@ describe('API Bill Routes', () => {
         res.body[0].user_id.should.equal(5);
         res.body[0].should.have.property('group_id');
         res.body[0].group_id.should.equal(1);
+        done();
       });
     });
   });
 
-  describe.only('POST /api/bill', function() {
+  describe('POST /api/bill', function() {
     it('should create a bill', function(done) {
       chai.request(server)
       .post('/api/bill')
@@ -142,7 +143,6 @@ describe('API Bill Routes', () => {
         userId: 2,
       })
       .end(function(err, res) {
-        console.log(err)
         res.should.have.status(201);
         res.should.be.json;
         res.body[0].should.have.property('id');
